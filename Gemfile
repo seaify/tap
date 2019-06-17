@@ -68,4 +68,5 @@ gem 'reform', '2.0.4'
 gem 'dry-validation'
 gem 'pg'
 gem 'devise'
-gem 'devise_invitable'
+gem 'devise_invitable', '~> 2.0.1'
+

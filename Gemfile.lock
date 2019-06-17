@@ -304,7 +304,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
-  devise_invitable
+  devise_invitable (~> 2.0.1)
   dry-validation
   factory_girl_rails
   jbuilder (~> 2.5)
