@@ -1,7 +1,29 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+['admin', 'operator'].each do |name|
+  role = Role.create!(name: name)
+  10.times do |n|
+    Project.create!(name: "project-#{n}") do |project|
+      2.times do
+        project.notification_templates.build(name: "notification template #{rand(100)}", context: "text #{rand(100)}", role: role)
+        project.locations.build(latitude: rand(10.0..100.0), longitude: rand(10.0..100.0))
+      end
+    end
+  end
+end
+
+10.times do |n|
+  User.create!(
+    email: "tap_#{n}@gmail.com",
+    password: 'password',
+    name: "tap_#{n}",
+  ) do |user|
+    projects = Project.all.sample(2)
+    projects.each do |project|
+      UserProject.create!(user: user, project: project, role: Role.all.sample)
+    end
+    2.times do
+      user.locations.build(latitude: rand(10.0..100.0), longitude: rand(10.0..100.0))
+    end
+  end
+
+end
+
