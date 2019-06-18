@@ -62,15 +62,16 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'rspec-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'ann'
-gem 'trailblazer'
-gem 'reform', '2.0.4'
-gem 'dry-validation'
+gem 'trailblazer', '~> 2.0.7'
+gem 'reform', '~> 2.2.4'
+gem 'dry-validation', '~> 1.1.0'
 gem 'pg'
 gem 'devise'
 gem 'devise_invitable', '~> 2.0.1'
