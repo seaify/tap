@@ -1,11 +1,13 @@
 module User::Contract
-  class AcceptInvite < Reform::Form
-=begin
-    property :name
-    property :password
+  class AcceptInvite < Dry::Validation::Contract
+    params do
+      required(:invitation_token).filled(:string)
+      required(:password).filled(:string)
+    end
 
-    validates :password,  length: 8..33
-    validates :name, presence: true
-=end
+    rule(:password) do
+      key.failure('must be greater than 8') if value.length < 8
+    end
+
   end
 end

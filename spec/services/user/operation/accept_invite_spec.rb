@@ -16,13 +16,9 @@ RSpec.describe User::AcceptInvite do
       let(:password) { '12345678' }
       it 'accept success' do
         expect{ action.call }.to change{ user.reload.invitation_accepted_at}
-      end
-
-      it '' do
-
+                            .and change{ user.projects.count }.from(0).to(1)
       end
     end
-
 
     context 'accept invite with illegal password' do
       let(:password) { '' }
