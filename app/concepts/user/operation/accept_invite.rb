@@ -1,8 +1,12 @@
 class User::AcceptInvite < Trailblazer::Operation
-  step    Contract::Build( constant: User::Contract::AcceptInvite )
-  step    Contract::Validate()
+  step :validate
   step :accept_invite
   step :create_user_project
+
+  def validate(options, params)
+    contract = User::Contract::AcceptInvite.new
+    contract.call(params)
+  end
 
   def accept_invite(options, params)
     options[:model] = User.accept_invitation!(params.merge(invitation_token: params[:invitation_token]))
