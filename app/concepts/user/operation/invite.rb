@@ -1,7 +1,7 @@
 class User::Invite < Trailblazer::Operation
-  step :invite!
+  step :invite
 
-  def invite!(options, params:)
+  def invite(options, params)
     options['model'] = User.invite!(params)
   end
 end

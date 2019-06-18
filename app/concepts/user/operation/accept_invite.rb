@@ -1,8 +1,7 @@
 class User::AcceptInvite < Trailblazer::Operation
-  steps test
-  step User.accept_invitation!(invitation_token: token, name: 'xx', password: '12345678')
+  step :accept_invite
 
-  def test
-    byebug
+  def accept_invite(options, params)
+    User.accept_invitation!(params.merge(invitation_token: params[:invitation_token]))
   end
 end

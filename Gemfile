@@ -69,7 +69,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'ann'
-gem 'trailblazer', '~> 2.0.7'
+gem 'trailblazer', '~> 2.1.0.beta1'
+gem 'trailblazer-rails', '~> 2.1.7'
 gem 'reform', '~> 2.2.4'
 gem 'dry-validation', '~> 1.1.0'
 gem 'pg'
