@@ -11,9 +11,9 @@
 #  updated_at :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :notification_template do
-    name "MyString"
-    context "MyText"
+    name { "MyString" }
+    context { "MyText" }
   end
 end

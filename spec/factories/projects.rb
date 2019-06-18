@@ -8,8 +8,8 @@
 #  updated_at :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :project do
-    name "MyString"
+    name { "MyString" }
   end
 end
