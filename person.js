@@ -1,16 +1,18 @@
 class Person {
-    constructor(name) {
-        this.name = name;
-    }
-    talk() {
-        console.log('send ajax request');
-    }
+  constructor(name) {
+    this.name = name;
+  }
+  talk() {
+    console.log(`send ajax request ${this.name}`);
+  }
 }
+
 var persons = [new Person('hello'), new Person('world')];
-console.log(persons);
-let requests = persons.map((person) => {
-    return new Promise((resolve) => {
-        resolve(person.talk());
-    });
-});
-Promise.all(requests).then(() => console.log('done'));
+
+async function handlePersons(persons) {
+  for(const person of persons) {
+    await person.talk();
+  }
+};
+
+handlePersons((persons));
