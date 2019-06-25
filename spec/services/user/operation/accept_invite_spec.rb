@@ -5,7 +5,7 @@ RSpec.describe User::AcceptInvite do
   describe "#call" do
     let!(:role) { create(:role, name: 'admin') }
     let!(:project) { create(:project, name: 'project 1') }
-    let!(:user) { user = User::Invite.(email: 'new_user1@example.com', name: 'seaify', invite_info: {project_id: project.id, role_id: role.id})['model'] }
+    let!(:user) { User::Invite.(email: 'new_user1@example.com', name: 'seaify', invite_info: {project_id: project.id, role_id: role.id})['model'] }
     let(:token) do
       user.deliver_invitation
       user.raw_invitation_token

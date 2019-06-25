@@ -1,16 +1,14 @@
-class Users::InvitationsController < Devise::InvitationsController
+class Users::InvitationsController < ApplicationController
 
-  before_action :configure_permitted_parameters, if: :devise_controller?
-  after_invitation_accepted :create_associations
-
-  def create_associations
-    info = resource.invite_info
-    UserProject.create!(user_id: resource.id, role_id: info['role_id'], project_id: info['project_id'], location_id: info['location_id'])
+  def accept
+    User::AcceptInvite.(accept_params)
+    redirect_to root_path, flash: { success: 'User invited!' }
   end
 
-  protected
+  private
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:accept_invitation, keys: [:email, :name, :role_id, :location_id, :project_id])
+  def accept_params
+    params.permit(:invitation_token, :password)
   end
+
 end
